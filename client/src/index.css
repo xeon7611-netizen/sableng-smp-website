@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #0f1115;
+    background-image: 
+      radial-gradient(ellipse at top, rgba(20, 24, 33, 0.9), #0a0b0e 80%),
+      repeating-linear-gradient(0deg, transparent, transparent 16px, rgba(255, 255, 255, 0.015) 16px, rgba(255, 255, 255, 0.015) 32px),
+      repeating-linear-gradient(90deg, transparent, transparent 16px, rgba(255, 255, 255, 0.015) 16px, rgba(255, 255, 255, 0.015) 32px);
+    background-attachment: fixed;
+    color: #e2e8f0;
+  }
+}
+
+/* Custom Minecraft Text Shadow */
+.mc-text-shadow {
+  text-shadow: 2px 2px 0px #000, 1px 1px 0px #000;
+}
+
+.mc-title-gold {
+  color: #FFAA00;
+  text-shadow: 3px 3px 0px #3F2A00, 1px 1px 0px #000;
+}
+
+.mc-title-green {
+  color: #55FF55;
+  text-shadow: 3px 3px 0px #153E15, 1px 1px 0px #000;
+}
+
+.mc-title-diamond {
+  color: #55FFFF;
+  text-shadow: 3px 3px 0px #153E3E, 1px 1px 0px #000;
+}
+
+/* Authentic Minecraft UI Button */
+.btn-mc-green {
+  background-color: #2e8b57;
+  color: #ffffff;
+  border-top: 2px solid #5cdb95;
+  border-left: 2px solid #5cdb95;
+  border-bottom: 4px solid #14462a;
+  border-right: 4px solid #14462a;
+  font-family: 'Press Start 2P', monospace;
+  text-shadow: 2px 2px 0px #000;
+  transition: all 0.1s ease;
+}
+.btn-mc-green:hover {
+  background-color: #38a169;
+}
+.btn-mc-green:active {
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  transform: translateY(2px);
+}
+
+.btn-mc-gray {
+  background-color: #3b4252;
+  color: #eceff4;
+  border-top: 2px solid #4c566a;
+  border-left: 2px solid #4c566a;
+  border-bottom: 4px solid #242933;
+  border-right: 4px solid #242933;
+  font-family: 'Press Start 2P', monospace;
+  text-shadow: 2px 2px 0px #000;
+  transition: all 0.1s ease;
+}
+.btn-mc-gray:hover {
+  background-color: #434c5e;
+}
+.btn-mc-gray:active {
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  transform: translateY(2px);
+}
+
+.btn-mc-gold {
+  background-color: #d97706;
+  color: #ffffff;
+  border-top: 2px solid #fbbf24;
+  border-left: 2px solid #fbbf24;
+  border-bottom: 4px solid #78350f;
+  border-right: 4px solid #78350f;
+  font-family: 'Press Start 2P', monospace;
+  text-shadow: 2px 2px 0px #000;
+  transition: all 0.1s ease;
+}
+.btn-mc-gold:hover {
+  background-color: #f59e0b;
+}
+.btn-mc-gold:active {
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+  transform: translateY(2px);
+}
+
+/* Minecraft In-Game Chat Box */
+.mc-chat-box {
+  background: rgba(0, 0, 0, 0.75);
+  border: 2px solid #2d3748;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #0f1115;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d3748;
+  border: 2px solid #1a202c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4a5568;
+}
+
+/* Dialog Backdrop styling conforming to modern web guidance */
+dialog::backdrop {
+  background-color: rgba(5, 7, 11, 0.88);
+  backdrop-filter: blur(8px);
+}
