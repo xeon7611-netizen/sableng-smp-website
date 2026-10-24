@@ -1,7 +1,7 @@
 import React from 'react';
 import { Shield, MessageSquare, Heart, ArrowUp } from 'lucide-react';
 
-export default function Footer({ config }) {
+export default function Footer({ config, onOpenAdmin }) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -87,6 +87,15 @@ export default function Footer({ config }) {
         <div className="pt-8 border-t border-[#1e2330] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
           <p>
             © {new Date().getFullYear()} {config.serverName}. Bukan produk resmi Minecraft. Tidak disetujui atau terkait dengan Mojang atau Microsoft.
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="ml-2 text-slate-700 hover:text-slate-500 transition-colors text-[10px] select-none"
+                title="Kelola"
+              >
+                [Admin]
+              </button>
+            )}
           </p>
 
           <button

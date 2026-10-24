@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Shield, Sparkles, Users, ShoppingBag, Newspaper, BookOpen, Lock, Menu, X, Copy, Check } from 'lucide-react';
+import { Shield, Sparkles, Users, ShoppingBag, Newspaper, BookOpen, Menu, X, Copy, Check } from 'lucide-react';
 
 export default function Navbar({ config, status, onOpenAdmin, onCopyIp, copied }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -64,24 +64,10 @@ export default function Navbar({ config, status, onOpenAdmin, onCopyIp, copied }
                   </>
                 )}
               </button>
-
-              <button
-                onClick={onOpenAdmin}
-                className="p-2 rounded-lg bg-[#1e232d] hover:bg-[#272d3b] border-2 border-[#384052] text-slate-400 hover:text-[#FFAA00] transition-colors"
-                title="Panel Pengelola (Admin)"
-              >
-                <Lock size={16} />
-              </button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="flex lg:hidden items-center gap-2">
-              <button
-                onClick={onOpenAdmin}
-                className="p-2 rounded-lg bg-[#1e232d] border border-[#384052] text-slate-400"
-              >
-                <Lock size={18} />
-              </button>
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="p-2 rounded-lg bg-[#1e232d] border border-[#384052] text-slate-200"

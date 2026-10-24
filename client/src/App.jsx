@@ -110,7 +110,28 @@ export default function App() {
     loadData();
     // Refresh live status every 15 seconds for real-time player updates
     const interval = setInterval(fetchStatus, 15000);
-    return () => clearInterval(interval);
+
+    const handleHash = () => {
+      if (window.location.hash === '#admin') {
+        setIsAdminOpen(true);
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        setIsAdminOpen(prev => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('hashchange', handleHash);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   return (
@@ -189,7 +210,7 @@ export default function App() {
       />
 
       {/* Footer */}
-      <Footer config={config} />
+      <Footer config={config} onOpenAdmin={() => setIsAdminOpen(true)} />
 
     </div>
   );
