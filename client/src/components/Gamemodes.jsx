@@ -8,15 +8,14 @@ export default function Gamemodes() {
       title: "Survival SMP Sableng",
       tag: "Main Server",
       badgeColor: "bg-emerald-950 text-[#55FF55] border-emerald-600",
-      description: "Survival santai tapi penuh aksi! Dilengkapi proteksi tanah anti-maling, custom enchantments, pekerjaan (Jobs), dan ekonomi antar pemain yang hidup.",
+      description: "Survival santai tapi penuh petualangan! Dilengkapi proteksi tanah anti-maling, eksplorasi World Custom yang memukau, dan pasar ekonomi antar pemain yang aktif.",
       icon: Compass,
       isComingSoon: false,
       features: [
         "Sistem Proteksi Klaim Tanah (/lands & /claim)",
         "Pasar Lelang & Toko Peti Pemain (/ah)",
-        "80+ Custom Enchantments Seimbang",
-        "Dungeon Boss & Monster Kuat Mingguan",
-        "Sistem Gaji Pekerjaan (Miner, Hunter, Farmer)"
+        "World Generator Custom (Bioma Unik, Tebing Megah & Alam Spektakuler)",
+        "Eksplorasi Dunia Tanpa Batas dengan Gua Eksotis & Struktur Unik"
       ]
     },
     {
