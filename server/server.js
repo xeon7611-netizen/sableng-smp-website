@@ -421,21 +421,29 @@ app.post('/api/admin/login', (req, res) => {
   return res.status(401).json({ success: false, message: "Password salah!" });
 });
 
-// Serve frontend static build in production
-const clientDist = path.join(__dirname, '../client/dist');
-app.use(express.static(clientDist));
-app.get('*', (req, res) => {
-  const indexHtml = path.join(clientDist, 'index.html');
-  res.sendFile(indexHtml, (err) => {
-    if (err) {
+// Serve frontend static build in local/standalone mode
+if (!process.env.VERCEL) {
+  const clientDist = fs.existsSync(path.join(__dirname, '../dist'))
+    ? path.join(__dirname, '../dist')
+    : path.join(__dirname, '../client/dist');
+
+  app.use(express.static(clientDist));
+  app.get('*', (req, res) => {
+    const indexHtml = path.join(clientDist, 'index.html');
+    if (fs.existsSync(indexHtml)) {
+      res.sendFile(indexHtml);
+    } else {
       res.status(200).send("API Server is running. Client is in development mode or not yet built.");
     }
   });
-});
 
-if (!process.env.VERCEL) {
   app.listen(PORT, () => {
     console.log(`🎮 Minecraft Server Website API running at http://localhost:${PORT}`);
+  });
+} else {
+  // On Vercel, serverless function handles /api
+  app.get('/api', (req, res) => {
+    res.json({ success: true, message: "Sableng SMP Serverless API is running." });
   });
 }
 
