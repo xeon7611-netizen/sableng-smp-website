@@ -2,12 +2,18 @@
   "name": "minecraft-server-website",
   "version": "1.0.0",
   "description": "Full-stack Minecraft Server Website with Live Status, Store, Whitelist, News, and Admin Panel",
+  "type": "module",
   "scripts": {
     "build": "npm --prefix client install && npm --prefix client run build && npm --prefix server install",
     "start": "node server/server.js",
     "dev:server": "cd server && node server.js",
     "dev:client": "cd client && npm run dev",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

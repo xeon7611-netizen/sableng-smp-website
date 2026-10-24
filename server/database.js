@@ -166,29 +166,35 @@ const DEFAULT_DATA = {
 };
 
 export function ensureDb() {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    fs.writeFileSync(DB_FILE, JSON.stringify(DEFAULT_DATA, null, 2), 'utf-8');
+  } catch (e) {
+    // Read-only environment fallback (e.g. Vercel)
   }
-  // Write or update DEFAULT_DATA
-  fs.writeFileSync(DB_FILE, JSON.stringify(DEFAULT_DATA, null, 2), 'utf-8');
 }
 
 export function readDb() {
-  if (!fs.existsSync(DB_FILE)) {
-    ensureDb();
+  if (fs.existsSync(DB_FILE)) {
+    try {
+      const content = fs.readFileSync(DB_FILE, 'utf-8');
+      return JSON.parse(content);
+    } catch (error) {
+      console.error("Error reading database:", error);
+    }
   }
-  try {
-    const content = fs.readFileSync(DB_FILE, 'utf-8');
-    return JSON.parse(content);
-  } catch (error) {
-    console.error("Error reading database:", error);
-    return DEFAULT_DATA;
-  }
+  return DEFAULT_DATA;
 }
 
 export function writeDb(data) {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true });
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true });
+    }
+    fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+  } catch (err) {
+    console.warn("Write to DB skipped (read-only environment):", err.message);
   }
-  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
 }

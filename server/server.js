@@ -216,15 +216,17 @@ app.get('/api/images/mancing', (req, res) => {
   const candidates = [
     path.join(__dirname, 'data/mc_mancing.jpg'),
     path.join(__dirname, '../client/public/mc_mancing.jpg'),
-    "C:/Users/xeon id/.gemini/antigravity/brain/c3a42cf0-f671-46d1-8b14-99274cdbae6e/.user_uploaded/media_1792752814946_bfff9c87.jpg",
-    "C:/Users/xeon id/.gemini/antigravity/brain/c3a42cf0-f671-46d1-8b14-99274cdbae6e/mc_fishing_event_1792752785607.jpg"
+    path.join(__dirname, '../client/dist/mc_mancing.jpg'),
+    path.join(process.cwd(), 'client/dist/mc_mancing.jpg'),
+    path.join(process.cwd(), 'client/public/mc_mancing.jpg'),
+    path.join(process.cwd(), 'server/data/mc_mancing.jpg')
   ];
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) {
       return res.sendFile(path.resolve(candidate));
     }
   }
-  res.status(404).send('Image not found');
+  res.redirect('/mc_mancing.jpg');
 });
 
 // Serve Claim Land image (User's authentic Minecraft screenshot)
@@ -232,15 +234,17 @@ app.get('/api/images/claim', (req, res) => {
   const candidates = [
     path.join(__dirname, 'data/mc_claim.jpg'),
     path.join(__dirname, '../client/public/mc_claim.jpg'),
-    "C:/Users/xeon id/.gemini/antigravity/brain/c3a42cf0-f671-46d1-8b14-99274cdbae6e/.user_uploaded/media_1792752827978_d2aa644f.jpg",
-    "C:/Users/xeon id/.gemini/antigravity/brain/c3a42cf0-f671-46d1-8b14-99274cdbae6e/mc_claim_land_1792752698609.jpg"
+    path.join(__dirname, '../client/dist/mc_claim.jpg'),
+    path.join(process.cwd(), 'client/dist/mc_claim.jpg'),
+    path.join(process.cwd(), 'client/public/mc_claim.jpg'),
+    path.join(process.cwd(), 'server/data/mc_claim.jpg')
   ];
   for (const candidate of candidates) {
     if (fs.existsSync(candidate)) {
       return res.sendFile(path.resolve(candidate));
     }
   }
-  res.status(404).send('Image not found');
+  res.redirect('/mc_claim.jpg');
 });
 
 // Auto-sync uploaded Minecraft images to public static folder on startup
@@ -429,6 +433,10 @@ app.get('*', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`🎮 Minecraft Server Website API running at http://localhost:${PORT}`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`🎮 Minecraft Server Website API running at http://localhost:${PORT}`);
+  });
+}
+
+export default app;
