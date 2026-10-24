@@ -18,7 +18,7 @@ const DEFAULT_DATA = {
     discordUrl: "https://discord.gg/zsfVXZ3GA",
     whatsappUrl: "https://chat.whatsapp.com/HpQZIcxnHrk3IWupTntclm?s=cl&p=a&mlu=0",
     motd: "★ Selamat Datang di Sableng SMP ★ Survival Kocak, Seru & Komunitas Anti-Toxic!",
-    adminPassword: "admin123"
+    adminPassword: "RIZKY280109"
   },
   announcements: [
     {

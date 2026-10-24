@@ -188,7 +188,7 @@ async function fetchMinecraftStatus(serverIp, forceRefresh = false) {
 function authenticateAdmin(req, res, next) {
   const adminSecret = req.headers['x-admin-password'];
   const db = readDb();
-  const validPassword = process.env.ADMIN_PASSWORD || db.config.adminPassword || "admin123";
+  const validPassword = process.env.ADMIN_PASSWORD || db.config.adminPassword || "RIZKY280109";
   if (adminSecret && adminSecret === validPassword) {
     return next();
   }
@@ -416,7 +416,7 @@ app.patch('/api/tickets/:id', authenticateAdmin, (req, res) => {
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
   const db = readDb();
-  const validPassword = process.env.ADMIN_PASSWORD || db.config.adminPassword || "admin123";
+  const validPassword = process.env.ADMIN_PASSWORD || db.config.adminPassword || "RIZKY280109";
   if (password === validPassword) {
     return res.json({ success: true, message: "Login berhasil!" });
   }
