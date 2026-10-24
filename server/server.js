@@ -188,7 +188,8 @@ async function fetchMinecraftStatus(serverIp, forceRefresh = false) {
 function authenticateAdmin(req, res, next) {
   const adminSecret = req.headers['x-admin-password'];
   const db = readDb();
-  if (adminSecret && adminSecret === db.config.adminPassword) {
+  const validPassword = process.env.ADMIN_PASSWORD || db.config.adminPassword || "admin123";
+  if (adminSecret && adminSecret === validPassword) {
     return next();
   }
   return res.status(401).json({ success: false, message: "Kata sandi admin tidak valid!" });
@@ -415,7 +416,8 @@ app.patch('/api/tickets/:id', authenticateAdmin, (req, res) => {
 app.post('/api/admin/login', (req, res) => {
   const { password } = req.body;
   const db = readDb();
-  if (password === db.config.adminPassword) {
+  const validPassword = process.env.ADMIN_PASSWORD || db.config.adminPassword || "admin123";
+  if (password === validPassword) {
     return res.json({ success: true, message: "Login berhasil!" });
   }
   return res.status(401).json({ success: false, message: "Password salah!" });
