@@ -12,7 +12,7 @@ Website modern, responsif, dan lengkap untuk server Minecraft Anda. Dibuat mengg
    - Kotak MOTD (Message of the Day).
 
 2. **📋 1-Klik Salin IP Server**:
-   - Mendukung **Java Edition** (`play.aetheriacraft.net:25565`) dan **Bedrock / MCPE** (`bedrock.aetheriacraft.net:19132`).
+   - Mendukung **Java Edition** (`play.aetheriacraft.net:30248`) dan **Bedrock / MCPE** (`bedrock.aetheriacraft.net:19132`).
    - Tombol salin instan dengan notifikasi umpan balik visual.
 
 3. **💎 Halaman Ranks / Store / Donasi**:
